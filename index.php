@@ -3,7 +3,11 @@ require_once 'unirest-php/lib/Unirest.php';
 function getLeagueForPlayer($summonerID,$region){
 	$ary =  array("X-Mashape-Authorization" => "fq3PY66RHuHbiQxQ5UamofWTBGcAV2IM");
 	$response = Unirest::get("https://community-league-of-legends.p.mashape.com/api/v1.0/$region/summoner/getLeagueForPlayer/$summonerID",$ary,null);
-	return $response;
+	//return $response;
+	//$json = file_get_contents($url);
+	$obj = json_decode($response);
+	//return $obj->resultItemList;
+	return $obj;
 }
 function getSummonerByName($summonerName,$region){
 	$ary =  array("X-Mashape-Authorization" => "fq3PY66RHuHbiQxQ5UamofWTBGcAV2IM");
