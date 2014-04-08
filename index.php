@@ -5,6 +5,7 @@ $summonerID = '38918850';
 $region = 'NA';
 $response = Unirest::get("https://community-league-of-legends.p.mashape.com/api/v1.0/$region/summoner/getLeagueForPlayer/$summonerID",$ary,null);
 
+print_r($response);
 echo "hello world";
 
 ?>
