@@ -19,13 +19,13 @@ $region = 'NA';
 $summonerName = 'kingrazy';
 $response = getSummonerByName($summonerName,$region);
 
-echo "<PRE>";
-print_r($response);
-echo "hello world";
-echo "</PRE>";
 
 $summonerID = '38918850';
-getLeagueForPlayer($summonerID,$region);
+$response = getLeagueForPlayer($summonerID,$region);
+
+echo "<PRE>";
+print_r($response);
+echo "</PRE>";
 ?>
 <HTML>
 <head>
