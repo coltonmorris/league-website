@@ -5,7 +5,17 @@ function getLeagueForPlayer($summonerID,$region){
 	$response = Unirest::get("https://community-league-of-legends.p.mashape.com/api/v1.0/$region/summoner/getLeagueForPlayer/$summonerID",$ary,null);
 	//return $response;
 	//$json = file_get_contents($url);
+echo "<PRE>";
+print_r($response);
+echo "</PRE>";
+echo "<br />";
+echo "<br />";
+echo "<br />";
+echo "<br />";
 	$obj = json_decode($response);
+echo "<PRE>";
+print_r($obj);
+echo "</PRE>";
 	//return $obj->resultItemList;
 	return $obj;
 }
@@ -23,9 +33,6 @@ $response = getSummonerByName($summonerName,$region);
 $summonerID = '38918850';
 $response = getLeagueForPlayer($summonerID,$region);
 
-echo "<PRE>";
-print_r($response);
-echo "</PRE>";
 ?>
 <HTML>
 <head>
