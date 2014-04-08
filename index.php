@@ -7,7 +7,7 @@ function getLeagueForPlayer($summonerID,$region){
 }
 function getSummonerByName($summonerName,$region){
 	$ary =  array("X-Mashape-Authorization" => "fq3PY66RHuHbiQxQ5UamofWTBGcAV2IM");
-	$response = Unirest::get("https://community-league-of-legends.p.mashape.com/api/v1.0/$region/summoner/getLeagueForPlayer/$summonerName",$ary,null);
+	$response = Unirest::get("https://community-league-of-legends.p.mashape.com/api/v1.0/$region/summoner/getSummonerByName/$summonerName",$ary,null);
 	return $response;
 }
 
