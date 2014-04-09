@@ -24,6 +24,9 @@ $region = 'NA';
 $summonerName = 'kingrazy';
 $response = getSummonerByName($summonerName,$region);
 
+echo "<PRE>";
+print_r($response);
+echo "</PRE>";
 
 $summonerID = '38918850';
 //$response = getLeagueForPlayer($summonerID,$region);
