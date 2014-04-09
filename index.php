@@ -27,6 +27,19 @@ $response = getSummonerByName($summonerName,$region);
 echo "<PRE>";
 print_r($response);
 echo "</PRE>";
+echo "<br />";
+
+$json = file_get_contents($response);
+echo "<PRE>";
+print_r($obj);
+echo "</PRE>";
+echo "<br />";
+
+$obj = json_decode($json);
+
+echo "<PRE>";
+print_r($obj);
+echo "</PRE>";
 
 $summonerID = '38918850';
 //$response = getLeagueForPlayer($summonerID,$region);
