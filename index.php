@@ -18,7 +18,8 @@ class Summoner {
 		}
 		else if(is_string($nameOrId)){
 			echo "constructing with name<br />";
-			$this->getSummonerByName($nameOrId,$region);
+			$response = $this->getSummonerByName($nameOrId,$region);
+			echo $response;
 		//	if ($response == false){
 		//		echo "summoner does not exist";
 		//	}
@@ -46,7 +47,7 @@ class Summoner {
 	//	echo "<PRE>";
 	//	print_r($obj);
 	//	echo "</PRE>";
-		/return $url;
+		return $url;
 	}
 }
 $region = 'NA';
