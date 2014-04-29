@@ -35,7 +35,7 @@ class Summoner {
 		$this->name = $name;
 		$this->profileIconId = $obj->$name->profileIconId;
 		$this->summonerLevel = $obj->$name->summonerLevel;
-		$this->summonerId = $obj->$name->summonerId;
+		$this->summonerId = $obj->$name->id;
 	}
 	public function getRecentGames(){
 		$url = $this->baseGameUrl . $this->summonerId . '/recent?api_key='.$this->apiKey;
