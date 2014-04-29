@@ -11,23 +11,13 @@ class Summoner {
 	public $name; 
 	public $profileIconId;
 	public $summonerId;
-	public $accountId;
+	public $summonerLevel;
 	public function __construct($nameOrId,$region){
 		if(is_int($nameOrId)){
 			echo "constructing with id<br />";
 		}
 		else if(is_string($nameOrId)){
-			$response = $this->getSummonerByName($nameOrId,$region);
-			//echo $response;
-		//	if ($response == false){
-		//		echo "summoner does not exist";
-		//	}
-		//	else{
-		//		$this->name = $response;
-		//	}
-		//	$this->profileIconId = $response->body->profileIconId;
-		//	$this->summonerId = $response->body->summonerId;
-		//	$this->accountId = $response->body->acctId;
+			$this->getSummonerByName($nameOrId,$region);
 		}
 		else{
 			echo "constructing with something else<br />";
@@ -41,11 +31,19 @@ class Summoner {
 		$url = $this->baseSummonerUrl . $name . '?api_key='.$this->apiKey;
 		$json = file_get_contents($url);
 		$obj = json_decode($json);
-		echo "<PRE>";
+		$this->name = $name;
+		$this->profileIconId = $obj->$name->profileIconId;
+		$this->summonerLevel = $obj->$name->summonerLevel;
+		$this->summonerId = $obj->$name->summonerId;
+	}
+	public function getRecentGames(){
+		$url = $this->baseGameUrl . $this->summonerId . '/recent?api_key='.$this->apiKey;
+		echo $url;
+		$json = file_get_contents($url);
+		$obj = json_decode($json);
+		echo '<PRE>';
 		print_r($obj);
-		echo "</PRE>";
-		echo $obj->$name->id;
-		return $url;
+		echo '</PRE>';
 	}
 }
 $region = 'NA';
@@ -54,7 +52,7 @@ $newSum = new Summoner($summonerName,$region);
 echo $newSum->name.'<br />';
 echo $newSum->profileIconId.'<br />';
 echo $newSum->summonerId.'<br />';
-echo $newSum->accountId.'<br />';
+$newSum.getRecentGames();
 ?>
 <HTML>
 <head>
