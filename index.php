@@ -46,6 +46,7 @@ class Summoner {
 		echo "<PRE>";
 		print_r($obj);
 		echo "</PRE>";
+		echo $obj->name;
 		return $url;
 	}
 }
