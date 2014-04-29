@@ -39,6 +39,7 @@ class Summoner {
 	}
 	public function getSummonerByName($name){
 		$url = $this->baseGameUrl . $name . '?api_key='.$apiKey;
+		echo $url;
 		$json = file_get_contents($url);
 		$obj = json_decode($json);
 		echo "<PRE>";
