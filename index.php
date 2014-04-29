@@ -40,10 +40,11 @@ class Summoner {
 	}
 	public function getSummonerByName($name,$region){
 		$url = $this->baseGameUrl . $name . '?api_key='.$apiKey;
+		echo $url;
 		$json = file_get_contents($url);
 		$obj = json_decode($json);
 		echo "<PRE>";
-		print_r($obj);
+		//print_r($obj);
 		echo "</PRE>";
 		return $url;
 	}
@@ -55,14 +56,6 @@ echo $newSum->name.'<br />';
 echo $newSum->profileIconId.'<br />';
 echo $newSum->summonerId.'<br />';
 echo $newSum->accountId.'<br />';
-
-$summonerName = 'urban0strich';
-$newSum = new Summoner($summonerName,$region);
-echo $newSum->name.'<br />';
-echo $newSum->profileIconId.'<br />';
-echo $newSum->summonerId.'<br />';
-echo $newSum->accountId.'<br />';
-echo "your shit aint here dawg";
 ?>
 <HTML>
 <head>
