@@ -1,8 +1,13 @@
 <?php
-require_once 'unirest-php/lib/Unirest.php';
-include_once 'db_functions.php';
+//https://prod.api.pvp.net/api/lol/na/v1.4/summoner/by-name/kingrazy?api_key=bcab5026-6ebe-4420-80f7-aaf79cf2ac64
+
 
 class Summoner {
+	public $apiKey = 'bcab5026-6ebe-4420-80f7-aaf79cf2ac64';
+	public $baseUrl = 'https://prod.api.pvp.net/api/lol/';
+//https://prod.api.pvp.net/api/lol/na/v1.3/game/by-summoner/38918850/recent?api_key=bcab5026-6ebe-4420-80f7-aaf79cf2ac64
+	public $baseGameUrl = 'https://prod.api.pvp.net/api/lol/na/v1.3/game/by-summoner/';
+	public $baseSummonerUrl = 'https://prod.api.pvp.net/api/lol/na/v1.4/summoner/by-name/';
 	public $name; 
 	public $profileIconId;
 	public $summonerId;
@@ -13,11 +18,16 @@ class Summoner {
 		}
 		else if(is_string($nameOrId)){
 			echo "constructing with name<br />";
-			$response = getSummonerByName($nameOrId,$region);
-			$this->name = $response->body->name;	
-			$this->profileIconId = $response->body->profileIconId;
-			$this->summonerId = $response->body->summonerId;
-			$this->accountId = $response->body->acctId;
+			$respone = getSummonerByName($nameOrId,$region);
+			if ($response == false){
+				echo "summoner does not exist";
+			}
+			else{
+				$this->name = $response;
+			}
+		//	$this->profileIconId = $response->body->profileIconId;
+		//	$this->summonerId = $response->body->summonerId;
+		//	$this->accountId = $response->body->acctId;
 		}
 		else{
 			echo "constructing with something else<br />";
@@ -27,9 +37,16 @@ class Summoner {
 		$profileIconLocation = 'profileIcons/'. $this->profileIconId .'.jpg';
 		return $profileIconLocation;
 	}
-
+	public function getSummonerByName($name){
+		$url = $this->baseGameUrl . $name . '?api_key='.$apiKey;
+		$json = file_get_contents($url);
+		$obj = json_decode($json);
+		echo "<PRE>";
+		print_r($obj);
+		echo "</PRE>";
+		return false;
+	}
 }
-echo "TEST";
 $region = 'NA';
 $summonerName = 'kingrazy';
 $newSum = new Summoner($summonerName,$region);
