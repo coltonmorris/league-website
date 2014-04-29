@@ -1,54 +1,54 @@
 <?php
 require_once 'unirest-php/lib/Unirest.php';
-function getLeagueForPlayer($summonerID,$region){
-	$ary =  array("X-Mashape-Authorization" => "fq3PY66RHuHbiQxQ5UamofWTBGcAV2IM");
-	$response = Unirest::get("https://community-league-of-legends.p.mashape.com/api/v1.0/$region/summoner/getLeagueForPlayer/$summonerID",$ary,null);
-	//$json = file_get_contents($url);
-	echo "<PRE>";
-	print_r($response);
-	echo "</PRE>";
-	$obj = json_decode($response);
-	echo "<PRE>";
-	print_r($obj);
-	echo "</PRE>";
-	//return $obj->resultItemList;
-	return $obj;
-}
-function getSummonerByName($summonerName,$region){
-	$ary =  array("X-Mashape-Authorization" => "fq3PY66RHuHbiQxQ5UamofWTBGcAV2IM");
-	$response = Unirest::get("https://community-league-of-legends.p.mashape.com/api/v1.0/$region/summoner/getSummonerByName/$summonerName",$ary,null);
-	return $response;
-}
+include_once 'db_functions.php';
 
+class Summoner {
+	public $name; 
+	public $profileIconId;
+	public $summonerId;
+	public $accountId;
+	public function __construct($nameOrId,$region){
+		if(is_int($nameOrId)){
+			echo "constructing with id<br />";
+		}
+		else if(is_string($nameOrId)){
+			echo "constructing with name<br />";
+			$response = getSummonerByName($nameOrId,$region);
+			$this->name = $response->body->name;	
+			$this->profileIconId = $response->body->profileIconId;
+			$this->summonerId = $response->body->summonerId;
+			$this->accountId = $response->body->acctId;
+		}
+		else{
+			echo "constructing with something else<br />";
+		}
+	}
+	public function getProfileIconLocation(){
+		$profileIconLocation = 'profileIcons/'. $this->profileIconId .'.jpg';
+		return $profileIconLocation;
+	}
+
+}
+echo "TEST";
 $region = 'NA';
 $summonerName = 'kingrazy';
-$response = getSummonerByName($summonerName,$region);
+$newSum = new Summoner($summonerName,$region);
+echo $newSum->name.'<br />';
+echo $newSum->profileIconId.'<br />';
+echo $newSum->summonerId.'<br />';
+echo $newSum->accountId.'<br />';
 
-echo "<PRE>";
-print_r($response);
-echo "</PRE>";
-echo "<br />";
-
-$json = file_get_contents($response);
-echo "<PRE>";
-print_r($obj);
-echo "</PRE>";
-echo "<br />";
-
-$obj = json_decode($json);
-
-echo "<PRE>";
-print_r($obj);
-echo "</PRE>";
-
-$summonerID = '38918850';
-//$response = getLeagueForPlayer($summonerID,$region);
-
+$summonerName = 'urban0strich';
+$newSum = new Summoner($summonerName,$region);
+echo $newSum->name.'<br />';
+echo $newSum->profileIconId.'<br />';
+echo $newSum->summonerId.'<br />';
+echo $newSum->accountId.'<br />';
+echo "your shit aint here dawg";
 ?>
 <HTML>
 <head>
 </head>
 <body>
-Colton's Website!
 </body>
 </HTML>
