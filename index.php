@@ -44,7 +44,7 @@ class Summoner {
 		echo "<PRE>";
 		print_r($obj);
 		echo "</PRE>";
-		echo $obj->kingrazy->id;
+		echo $obj->$name->id;
 		return $url;
 	}
 }
