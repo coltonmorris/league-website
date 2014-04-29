@@ -29,6 +29,7 @@ class Summoner {
 	}
 	public function getSummonerByName($name,$region){
 		$url = $this->baseSummonerUrl . $name . '?api_key='.$this->apiKey;
+		echo $url;
 		$json = file_get_contents($url);
 		$obj = json_decode($json);
 		$this->name = $name;
