@@ -1,11 +1,11 @@
 <?php
 //https://prod.api.pvp.net/api/lol/na/v1.4/summoner/by-name/kingrazy?api_key=bcab5026-6ebe-4420-80f7-aaf79cf2ac64
 
+//https://prod.api.pvp.net/api/lol/na/v1.3/game/by-summoner/38918850/recent?api_key=bcab5026-6ebe-4420-80f7-aaf79cf2ac64
 
 class Summoner {
 	public $apiKey = 'bcab5026-6ebe-4420-80f7-aaf79cf2ac64';
 	public $baseUrl = 'https://prod.api.pvp.net/api/lol/';
-//https://prod.api.pvp.net/api/lol/na/v1.3/game/by-summoner/38918850/recent?api_key=bcab5026-6ebe-4420-80f7-aaf79cf2ac64
 	public $baseGameUrl = 'https://prod.api.pvp.net/api/lol/na/v1.3/game/by-summoner/';
 	public $baseSummonerUrl = 'https://prod.api.pvp.net/api/lol/na/v1.4/summoner/by-name/';
 	public $name; 
@@ -18,7 +18,7 @@ class Summoner {
 		}
 		else if(is_string($nameOrId)){
 			echo "constructing with name<br />";
-			$respone = getSummonerByName($nameOrId,$region);
+			//$respone = getSummonerByName($nameOrId,$region);
 			echo 'test';
 		//	if ($response == false){
 		//		echo "summoner does not exist";
