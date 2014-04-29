@@ -19,12 +19,12 @@ class Summoner {
 		else if(is_string($nameOrId)){
 			echo "constructing with name<br />";
 			$respone = getSummonerByName($nameOrId,$region);
-			if ($response == false){
-				echo "summoner does not exist";
-			}
-			else{
-				$this->name = $response;
-			}
+		//	if ($response == false){
+		//		echo "summoner does not exist";
+		//	}
+		//	else{
+		//		$this->name = $response;
+		//	}
 		//	$this->profileIconId = $response->body->profileIconId;
 		//	$this->summonerId = $response->body->summonerId;
 		//	$this->accountId = $response->body->acctId;
@@ -37,7 +37,7 @@ class Summoner {
 		$profileIconLocation = 'profileIcons/'. $this->profileIconId .'.jpg';
 		return $profileIconLocation;
 	}
-	public function getSummonerByName($name){
+	public function getSummonerByName($name,$region){
 		$url = $this->baseGameUrl . $name . '?api_key='.$apiKey;
 		echo $url;
 		$json = file_get_contents($url);
