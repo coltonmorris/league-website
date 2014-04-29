@@ -17,7 +17,6 @@ class Summoner {
 			echo "constructing with id<br />";
 		}
 		else if(is_string($nameOrId)){
-			echo "constructing with name<br />";
 			$response = $this->getSummonerByName($nameOrId,$region);
 			//echo $response;
 		//	if ($response == false){
@@ -40,13 +39,12 @@ class Summoner {
 	}
 	public function getSummonerByName($name,$region){
 		$url = $this->baseSummonerUrl . $name . '?api_key='.$this->apiKey;
-		echo $url;
 		$json = file_get_contents($url);
 		$obj = json_decode($json);
 		echo "<PRE>";
 		print_r($obj);
 		echo "</PRE>";
-		echo $obj->name;
+		echo $obj->kingrazy;
 		return $url;
 	}
 }
