@@ -52,7 +52,7 @@ $newSum = new Summoner($summonerName,$region);
 echo $newSum->name.'<br />';
 echo $newSum->profileIconId.'<br />';
 echo $newSum->summonerId.'<br />';
-$newSum.getRecentGames();
+$newSum->getRecentGames();
 ?>
 <HTML>
 <head>
