@@ -39,7 +39,7 @@ class Summoner {
 		return $profileIconLocation;
 	}
 	public function getSummonerByName($name,$region){
-		$url = $this->baseGameUrl . $name . '?api_key='.$this->apiKey;
+		$url = $this->baseSummonerUrl . $name . '?api_key='.$this->apiKey;
 		echo $url;
 		$json = file_get_contents($url);
 		$obj = json_decode($json);
