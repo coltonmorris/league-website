@@ -18,7 +18,7 @@ class Summoner {
 		}
 		else if(is_string($nameOrId)){
 			echo "constructing with name<br />";
-			getSummonerByName($nameOrId,$region);
+			$this->getSummonerByName($nameOrId,$region);
 		//	if ($response == false){
 		//		echo "summoner does not exist";
 		//	}
