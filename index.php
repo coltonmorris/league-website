@@ -18,8 +18,8 @@ class Summoner {
 		}
 		else if(is_string($nameOrId)){
 			echo "constructing with name<br />";
-			//$respone = getSummonerByName($nameOrId,$region);
-			echo 'test';
+			$respone = getSummonerByName($nameOrId,$region);
+			echo $response;
 		//	if ($response == false){
 		//		echo "summoner does not exist";
 		//	}
@@ -39,8 +39,9 @@ class Summoner {
 		return $profileIconLocation;
 	}
 	public function getSummonerByName($name,$region){
-		$url = $this->baseGameUrl . $name . '?api_key='.$apiKey;
-		echo $url;
+	//	$url = $this->baseGameUrl . $name . '?api_key='.$apiKey;
+	//	echo $url;
+		$url = 'https://prod.api.pvp.net/api/lol/na/v1.3/game/by-summoner/38918850/recent?api_key=bcab5026-6ebe-4420-80f7-aaf79cf2ac64';
 		$json = file_get_contents($url);
 		$obj = json_decode($json);
 		echo "<PRE>";
